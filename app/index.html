@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuAdmin — Login</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/auth.css" />
+</head>
+<body>
+
+<div class="auth-root">
+
+  <!-- ── LEFT: Brand Panel ── -->
+  <div class="auth-brand">
+    <div class="brand-top">
+     <div class="brand-logo-wrap">
+  <span class="brand-logo-letter">🍽️</span>
+</div>
+      <div class="brand-title">Menu<span>Admin</span></div>
+      <p class="brand-desc">
+        Complete restaurant management — menu, orders, payments and analytics in one place.
+      </p>
+
+      <div class="brand-features">
+        <div class="brand-feat">
+          <span class="feat-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </span>
+          Live orders with realtime updates
+        </div>
+        <div class="brand-feat">
+          <span class="feat-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          Menu items and categories
+        </div>
+        <div class="brand-feat">
+          <span class="feat-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          GST, taxes &amp; custom charges
+        </div>
+        <div class="brand-feat">
+          <span class="feat-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </span>
+          Razorpay payment integration
+        </div>
+        <div class="brand-feat">
+          <span class="feat-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
+          Sales analysis &amp; insights
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-bottom">
+      <div class="brand-badge">
+        <span class="brand-badge-dot"></span>
+        Firebase powered — always live
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RIGHT: Form Panel ── -->
+  <div class="auth-form-side">
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-panel="login">Sign In</button>
+      <button class="auth-tab" data-panel="signup">Create Account</button>
+    </div>
+
+    <!-- ── LOGIN ── -->
+    <div id="panel-login" class="auth-panel active">
+      <div class="panel-heading">Welcome back</div>
+      <p class="panel-sub">Sign in to your restaurant account</p>
+
+      <div class="field">
+        <label>Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" id="loginEmail" placeholder="you@restaurant.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label-row">
+          <label>Password</label>
+          <button class="forgot-link" id="showForgot">Forgot password?</button>
+        </div>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" />
+          <button type="button" class="eye-btn" id="eyeLogin">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+</button>
+        </div>
+      </div>
+
+      <button id="loginBtn" class="btn-primary">
+        Sign In
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <p class="auth-note">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secured by Firebase Authentication
+      </p>
+    </div>
+
+    <!-- ── FORGOT PASSWORD ── -->
+    <div id="panel-forgot" class="auth-panel">
+      <button class="back-to-login" id="backToLogin">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Sign In
+      </button>
+
+      <div class="panel-heading" style="margin-top:20px;">Reset password</div>
+      <p class="panel-sub">Enter your email and we'll send you a reset link</p>
+
+      <div class="field">
+        <label>Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" id="forgotEmail" placeholder="you@restaurant.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <!-- Success state (hidden until email sent) -->
+      <div class="reset-success" id="resetSuccess" style="display:none;">
+        <div class="reset-success-icon">✉️</div>
+        <div class="reset-success-title">Check your inbox</div>
+        <p class="reset-success-sub">A password reset link has been sent to your email address. Check your spam folder if you don't see it.</p>
+      </div>
+
+      <button id="resetBtn" class="btn-primary">
+        Send Reset Link
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+
+      <p class="auth-note">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Reset link expires in 1 hour
+      </p>
+    </div>
+
+    <!-- ── SIGNUP ── -->
+    <div id="panel-signup" class="auth-panel">
+      <div class="panel-heading">Create account</div>
+      <p class="panel-sub">Get started — free forever, no credit card needed</p>
+
+      <div class="field">
+        <label>Restaurant Name</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <input type="text" id="signupName" placeholder="e.g. Spice Garden" autocomplete="organization" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" id="signupEmail" placeholder="you@restaurant.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password <span class="field-hint">Min. 8 characters and strong password</span></label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input type="password" id="signupPassword" placeholder="••••••••" autocomplete="new-password" />
+          <button type="button" class="eye-btn" id="eyeSignup">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+</button>
+        </div>
+      </div>
+
+      <button id="signupBtn" class="btn-primary">
+        Create Account
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <p class="auth-note">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secured by Firebase Authentication
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="./js/auth.js"></script>
+
+</body>
+</html>

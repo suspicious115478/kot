@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuAdmin — Dashboard</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">MenuAdmin</span>
+    </div>
+
+    <div class="sidebar-chip">
+      <label class="logo-btn" for="logoInput" title="Upload logo">
+        <img id="logoPreview" src="" alt="logo" />
+        <span id="logoIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+      </label>
+      <input type="file" id="logoInput" accept="image/*" style="display:none;" />
+      <div class="chip-info">
+        <span class="chip-label">Restaurant</span>
+        <strong id="restaurantLabel">Loading...</strong>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">General</span>
+
+      <a href="./dashboard.html" class="sidebar-link active">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </span>
+        Dashboard
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Menu</span>
+
+      <a href="./categories.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        Categories
+      </a>
+
+      <a href="./menu-items.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </span>
+        Menu Items
+      </a>
+
+      <a href="./edit-menu.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </span>
+        Edit Menu
+      </a>
+
+      <a href="./web-order.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </span>
+        New Order
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Operations</span>
+
+      <a href="./orders.html" class="sidebar-link sidebar-link-orders">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </span>
+        Orders
+        <span class="slink-live">LIVE</span>
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Settings</span>
+
+      <a href="./taxes.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </span>
+        Taxes & Charges
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="./brand-color.html" class="sidebar-bottom-btn" id="colorBtn" style="text-decoration:none;">
+        <span id="colorDot" class="color-swatch"></span>
+        Brand Color
+      </a>
+      <button id="logoutBtn" class="sidebar-bottom-btn logout-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <div class="topbar">
+      <div class="realtime-pill">
+        <span class="live-dot"></span>
+        Connected — stats update in realtime
+      </div>
+      <div class="topbar-right">
+        <span class="stat-id-chip">ID: <strong id="statRestId">—</strong></span>
+          <button id="syncBtn" class="sync-btn">Sync Changes</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="greeting fade-up">
+        <div class="greeting-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Restaurant Dashboard
+        </div>
+        <h1 class="page-title">Good to see you <span class="title-wave">👋</span></h1>
+        <p class="greeting-sub">Manage your menu, categories and track live orders</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row fade-up" style="animation-delay:0.08s">
+
+        <div class="stat-card">
+          <div class="stat-icon-wrap cat-clr">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <span class="stat-number" id="statCategories">—</span>
+          <span class="stat-lbl">Categories</span>
+          <span class="stat-sub">in your menu</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrap dish-clr">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <span class="stat-number" id="statItems">—</span>
+          <span class="stat-lbl">Menu Items</span>
+          <span class="stat-sub">total dishes</span>
+        </div>
+
+        <div class="stat-card stat-card-orders">
+          <div class="stat-icon-wrap order-clr">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span class="stat-number">Live</span>
+          <span class="stat-lbl">Orders</span>
+          <a href="./orders.html" class="stat-goto">View all →</a>
+        </div>
+
+      </div>
+
+      <!-- Quick actions -->
+      <div class="section-header fade-up" style="animation-delay:0.12s">
+        <span class="section-label">Quick Actions</span>
+      </div>
+
+      <div class="action-grid fade-up" style="animation-delay:0.16s">
+
+        <a href="./categories.html" class="action-card ac-cat">
+          <div class="ac-top">
+            <div class="ac-icon cat-clr">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <span class="ac-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="ac-title">Categories</div>
+          <div class="ac-desc">Add menu sections like Starters, Mains, Drinks</div>
+        </a>
+
+        <a href="./taxes.html" class="action-card ac-tax">
+          <div class="ac-top">
+            <div class="ac-icon tax-ac-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="ac-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="ac-title">Taxes & Charges</div>
+          <div class="ac-desc">Configure GST, service charge and custom charges</div>
+        </a>
+
+        <a href="./front-screen.html" class="action-card" style="border-top: 3px solid #FF5722;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#FBE9E7; color:#FF5722;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <span class="ac-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </span>
+  </div>
+  <div class="ac-title">Front Screen</div>
+  <div class="ac-desc">Manage Hero Image and Scrolling Ribbon Text</div>
+</a>
+
+
+
+<a href="./payment-settings.html" class="action-card" style="border-top: 3px solid #0F766E;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#F0FDFA; color:#0F766E; border:1px solid #99F6E4;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    </div>
+    <span class="ac-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </span>
+  </div>
+  <div class="ac-title">Payment Settings</div>
+  <div class="ac-desc">Connect Razorpay — UPI keys and VPA configure </div>
+</a>
+
+
+
+
+
+
+
+<a href="./web-order.html" class="action-card" style="border-top: 3px solid #C8831A;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#FEF3E2; color:#C8831A; border:1px solid #FDDCAA;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    </div>
+    <span class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </div>
+  <div class="ac-title">New Order</div>
+  <div class="ac-desc">Manual POS — take orders directly from web panel</div>
+</a>
+<a href="./inventory.html" class="action-card" style="border-top: 3px solid #1D4ED8;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+    </div>
+    <span class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </div>
+  <div class="ac-title">Inventory</div>
+  <div class="ac-desc">Manage units and raw material stock</div>
+</a>
+<a href="./discount-items.html" class="action-card" style="border-top: 3px solid #E11D48;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#FFF1F2; color:#E11D48; border:1px solid #FECDD3;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    </div>
+    <span class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </div>
+  <div class="ac-title">Discounts</div>
+  <div class="ac-desc">Apply discounted prices on any menu item</div>
+</a>
+<a href="./kiosk-layout.html" class="action-card" style="border-top: 3px solid #7C3AED;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#F5F3FF; color:#7C3AED; border:1px solid #DDD6FE;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <span class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </div>
+  <div class="ac-title">Kiosk Layout</div>
+ <div class="ac-desc">Choose between Classic or Single Window layout</div>
+</a>
+<a href="./featured-items.html" class="action-card ac-feat" style="border-top: 3px solid #F59E0B;">
+  <div class="ac-top">
+    <div class="ac-icon feat-ac-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <span class="ac-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </span>
+  </div>
+  <div class="ac-title">Featured Items</div>
+  <div class="ac-desc">select top 5 dishes to show in suggestions</div>
+</a>
+ 
+
+
+
+
+
+<a href="./ad-banner.html" class="action-card" style="border-top: 3px solid #DB2777;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#FDF2F8; color:#DB2777; border:1px solid #FBCFE8;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <span class="ac-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </span>
+  </div>
+  <div class="ac-title">Ad Banner</div>
+  <div class="ac-desc">Upload promotional banner for your kiosk screen</div>
+</a>
+        <a href="./menu-items.html" class="action-card ac-menu">
+          <div class="ac-top">
+            <div class="ac-icon dish-clr">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <span class="ac-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="ac-title">Menu Items</div>
+          <div class="ac-desc">Upload dishes with name, price and photo</div>
+        </a>
+
+        <a href="./edit-menu.html" class="action-card ac-edit">
+          <div class="ac-top">
+            <div class="ac-icon edit-clr">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <span class="ac-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="ac-title">Edit Menu</div>
+          <div class="ac-desc">Edit, delete or mark items as unavailable</div>
+        </a>
+
+        <a href="./orders.html" class="action-card ac-orders">
+          <div class="ac-top">
+            <div class="ac-icon order-clr">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <span class="ac-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+          <div class="ac-title-row">
+            <span class="ac-title">Orders</span>
+            <span class="live-badge"><span class="live-badge-dot"></span>LIVE</span>
+          </div>
+          <div class="ac-desc">Live and past orders with realtime updates</div>
+        </a>
+
+
+
+
+
+
+
+
+<a href="./analysis.html" class="action-card" style="border-top: 3px solid #0284C7;">
+  <div class="ac-top">
+    <div class="ac-icon" style="background:#F0F9FF; color:#0284C7; border:1px solid #BAE6FD;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    </div>
+    <span class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </div>
+  <div class="ac-title">Analysis</div>
+  <div class="ac-desc">Sales insights and item performance</div>
+</a>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>

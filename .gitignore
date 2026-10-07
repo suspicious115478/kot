@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+release/
+build/
+.env
+.env.*
+*.log
+*.exe
+*.zip
+serviceAccount*.json
+*-firebase-adminsdk-*.json

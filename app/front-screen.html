@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Front Screen — MenuAdmin</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <style>
+    /* ── FRONT SCREEN PAGE STYLES ── */
+
+    .page-heading { margin-bottom: 32px; }
+
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.67rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #FF5722;
+      margin-bottom: 12px;
+    }
+    .eyebrow-dot-fs {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #FF5722;
+    }
+    .page-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1.08;
+    }
+    .page-sub {
+      font-size: 0.875rem; color: var(--muted);
+      margin-top: 8px;
+    }
+
+
+
+
+
+
+    .tag-input-box {
+  min-height: 80px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface2);
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-items: flex-start;
+  cursor: text;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.tag-input-box:focus-within {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(200,131,26,0.1);
+}
+.tag-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px 4px 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-brd);
+  border-radius: 99px;
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.tag-chip-remove {
+  display: flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent-brd);
+  border: none; cursor: pointer;
+  color: var(--accent);
+  font-size: 10px; font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  transition: background 0.15s;
+}
+.tag-chip-remove:hover { background: var(--accent); color: #fff; }
+.tag-text-input {
+  border: none; outline: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  flex: 1; min-width: 140px;
+  padding: 4px 2px;
+}
+.tag-text-input::placeholder { color: var(--muted); }
+.tag-hint {
+  font-size: 0.7rem; color: var(--muted);
+  margin: 6px 0 0;
+}
+.tag-hint.at-limit { color: var(--red); }
+
+    /* ── EDITOR GRID ── */
+    .editor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 24px;
+      margin-top: 0;
+    }
+
+    /* ── EDITOR CARD ── */
+    .editor-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: all 0.22s;
+    }
+    .editor-card:hover {
+      border-color: var(--border2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    .editor-card-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .editor-card-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-hero  { background: #FBE9E7; border: 1px solid #FFCCBC; color: #FF5722; }
+    .icon-ribbon{ background: var(--accent-bg); border: 1px solid var(--accent-brd); color: var(--accent); }
+
+    .editor-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem; font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .editor-card-sub {
+      font-size: 0.72rem; color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── HERO UPLOAD BOX ── */
+    .hero-upload-box {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 2px dashed var(--border2);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.2s;
+      background: var(--surface2);
+    }
+    .hero-upload-box:hover {
+      border-color: #FF5722;
+      background: #FBE9E7;
+    }
+    .hero-upload-box.dragover {
+      border-color: #FF5722;
+      background: #FBE9E7;
+      transform: scale(1.01);
+    }
+
+    #heroPreview {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+
+    .upload-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      color: var(--muted);
+      padding: 24px;
+      text-align: center;
+    }
+    .upload-placeholder-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: #FBE9E7;
+      border: 1px solid #FFCCBC;
+      color: #FF5722;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .upload-placeholder p {
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--text2);
+      margin: 0;
+    }
+    .upload-placeholder span {
+      font-size: 0.72rem; color: var(--muted);
+    }
+
+    .hero-overlay-btn {
+      position: absolute; bottom: 12px; right: 12px;
+      display: none;
+      align-items: center; gap: 6px;
+      padding: 7px 14px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none; border-radius: 99px;
+      font-size: 0.72rem; font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.15s;
+      backdrop-filter: blur(4px);
+    }
+    .hero-overlay-btn:hover { background: rgba(0,0,0,0.8); }
+    #heroPreview[style*="block"] ~ .hero-overlay-btn { display: flex; }
+
+    /* ── RIBBON SECTION ── */
+    .ribbon-label-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .field-label {
+      font-size: 0.74rem; font-weight: 600;
+      color: var(--text2);
+      letter-spacing: 0.01em;
+    }
+    .item-count-badge {
+      font-size: 0.7rem; font-weight: 600;
+      padding: 2px 10px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-brd);
+      color: var(--accent);
+      border-radius: 99px;
+    }
+    .item-count-badge.over {
+      background: var(--red-bg);
+      border-color: var(--red-brd);
+      color: var(--red);
+    }
+
+    .custom-textarea {
+      width: 100%;
+      height: 130px;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface2);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      resize: none;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      line-height: 1.6;
+    }
+    .custom-textarea::placeholder { color: var(--muted); }
+    .custom-textarea:focus {
+      border-color: var(--accent);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(200,131,26,0.1);
+    }
+
+    /* ribbon preview */
+    .ribbon-preview-wrap {
+      margin-top: 14px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--sidebar-bg);
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+    }
+    .ribbon-preview-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--s-muted);
+      margin-bottom: 8px;
+    }
+    .ribbon-track {
+      display: flex; gap: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ribbon-items {
+      display: flex; gap: 20px;
+      animation: ribbonScroll 12s linear infinite;
+      white-space: nowrap;
+    }
+    .ribbon-item {
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--s-text);
+      display: flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .ribbon-sep {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    @keyframes ribbonScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── INFO BANNER ── */
+    .info-banner {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px;
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-brd);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+    }
+    .info-banner-icon {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: #DBEAFE; border: 1px solid var(--blue-brd);
+      color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-banner-text {
+      font-size: 0.78rem; color: var(--blue);
+      line-height: 1.55;
+    }
+    .info-banner-text strong { font-weight: 600; }
+
+    /* ── SAVE BUTTON (bottom) ── */
+    .save-footer {
+      display: flex; align-items: center; justify-content: flex-end; gap: 12px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .save-note {
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .btn-save {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px;
+      background: #FF5722;
+      color: #fff;
+      border: none; border-radius: 99px;
+      font-size: 0.82rem; font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(255,87,34,0.3);
+    }
+    .btn-save:hover:not(:disabled) {
+      background: #E64A19;
+      box-shadow: 0 6px 20px rgba(255,87,34,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-save:disabled {
+      opacity: 0.6; cursor: not-allowed; transform: none;
+    }
+
+    /* spinner */
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── SIDEBAR ACTIVE ── */
+    .sidebar-link.active {
+      background: rgba(255,87,34,0.12) !important;
+      color: #FF5722 !important;
+    }
+    .sidebar-link.active .slink-icon {
+      background: rgba(255,87,34,0.15) !important;
+      color: #FF5722 !important;
+    }
+
+    /* ── TOPBAR LEFT ── */
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 0.15s;
+    }
+    .back-btn:hover { color: var(--text); border-color: var(--border2); }
+    .topbar-page-title {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text2);
+    }
+    .topbar-divider {
+      width: 1px; height: 18px;
+      background: var(--border2);
+    }
+    .fs-live-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px;
+      background: #FBE9E7;
+      border: 1px solid #FFCCBC;
+      border-radius: 99px;
+      font-size: 0.72rem; font-weight: 600;
+      color: #FF5722;
+      letter-spacing: 0.03em;
+    }
+    .fs-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #FF5722;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .editor-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .sidebar { display: none; }
+      .content { padding: 24px 18px 50px; }
+      .topbar  { padding: 0 18px; }
+      .page-title { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">MenuAdmin</span>
+    </div>
+
+    <div class="sidebar-chip">
+      <label class="logo-btn" for="logoInput" title="Upload logo">
+        <img id="logoPreview" src="" alt="logo" />
+        <span id="logoIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+      </label>
+      <input type="file" id="logoInput" accept="image/*" style="display:none;" />
+      <div class="chip-info">
+        <span class="chip-label">Restaurant</span>
+        <strong id="restaurantLabel">Loading...</strong>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">General</span>
+
+      <a href="./dashboard.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </span>
+        Dashboard
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Menu</span>
+
+      <a href="./categories.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        Categories
+      </a>
+
+      <a href="./menu-items.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </span>
+        Menu Items
+      </a>
+
+      <a href="./edit-menu.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </span>
+        Edit Menu
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Operations</span>
+
+      <a href="./orders.html" class="sidebar-link sidebar-link-orders">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </span>
+        Orders
+        <span class="slink-live">LIVE</span>
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Settings</span>
+
+      <a href="./taxes.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </span>
+        Taxes & Charges
+      </a>
+
+      <!-- <span class="nav-section-label" style="margin-top:8px;">Kiosk</span>
+
+      <a href="./front-screen.html" class="sidebar-link active">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </span>
+        Front Screen
+      </a> -->
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="./brand-color.html" class="sidebar-bottom-btn" id="colorBtn" style="text-decoration:none;">
+        <span id="colorDot" class="color-swatch"></span>
+        Brand Color
+      </a>
+      <button id="logoutBtn" class="sidebar-bottom-btn logout-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+     <div class="topbar-left">
+  <a href="./dashboard.html" class="back-btn">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Dashboard
+  </a>
+  <span class="topbar-page-title">Front Screen</span>
+</div>
+<div class="topbar-right">
+  <div class="realtime-pill">
+    <span class="live-dot"></span>
+    After changes - Sync changes
+  </div>
+</div>
+      <!-- <div class="topbar-right">
+        <button id="saveAllBtn" class="btn-save">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Everything
+        </button>
+      </div> -->
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- Page Heading -->
+      <div class="page-heading fade-up">
+        <div class="page-eyebrow">
+          <span class="eyebrow-dot-fs"></span>
+          Kiosk Management
+        </div>
+        <h1 class="page-title">Front Screen</h1>
+        <p class="page-sub">Update your kiosk's hero image and scrolling ribbon text</p>
+      </div>
+
+      <!-- Info Banner -->
+      <div class="info-banner fade-up" style="animation-delay:0.06s">
+        <div class="info-banner-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="info-banner-text">
+          <strong>Changes apply instantly to the kiosk.</strong> The hero image appears as the floating dish on your attract screen. Ribbon text scrolls across the bottom. Save to push live.
+        </div>
+      </div>
+
+      <!-- Editor Grid -->
+      <div class="editor-grid fade-up" style="animation-delay:0.1s">
+
+        <!-- Hero Image Card -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="editor-card-icon icon-hero">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div>
+              <div class="editor-card-title">Hero Image</div>
+              <div class="editor-card-sub">Floating dish on the attract screen (item1)</div>
+            </div>
+          </div>
+
+          <div class="hero-upload-box" id="heroDropZone">
+            <img id="heroPreview" src="" alt="Hero Preview" />
+            <div class="upload-placeholder" id="uploadPlaceholder">
+              <div class="upload-placeholder-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <p>Click to upload Hero Image</p>
+              <span>PNG, JPG, WEBP · Recommended square</span>
+            </div>
+            <button class="hero-overlay-btn" id="changeHeroBtn" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              Change Image
+            </button>
+            <input type="file" id="heroInput" accept="image/*" style="display:none;" />
+          </div>
+        </div>
+
+        <!-- Ribbon Text Card -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="editor-card-icon icon-ribbon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <div>
+              <div class="editor-card-title">Ribbon Text</div>
+              <div class="editor-card-sub">Scrolling marquee at the bottom (item_names)</div>
+            </div>
+          </div>
+
+        <div class="ribbon-label-row">
+  <label class="field-label">Items</label>
+  <span class="item-count-badge" id="wordCount">0 / 12</span>
+</div>
+<div class="tag-input-box" id="tagBox">
+  <input id="ribbonInput" class="tag-text-input" placeholder="Type item name, press Enter" maxlength="40" />
+</div>
+<p class="tag-hint" id="tagHint">Press Enter or comma to add · Max 12 items</p>
+
+          <!-- Live ribbon preview -->
+          <div class="ribbon-preview-wrap" id="ribbonPreviewWrap">
+            <div class="ribbon-preview-label">Live Preview</div>
+            <div class="ribbon-track">
+              <div class="ribbon-items" id="ribbonItems">
+                <span class="ribbon-item"><span class="ribbon-sep">✦</span> Add items above to see preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Save Footer -->
+      <div class="save-footer fade-up" style="animation-delay:0.18s">
+        <span class="save-note">Changes will sync to kiosk automatically after saving</span>
+        <button id="saveFooterBtn" class="btn-save">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Everything
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="./js/front-screen.js"></script>
+<!-- Replace this block with: <script type="module" src="./js/front-screen.js"></script> -->
+</body>
+</html>

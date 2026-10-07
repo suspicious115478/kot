@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuAdmin — Inventory</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/inventory.css" />
+
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">MenuAdmin</span>
+    </div>
+
+    <div class="sidebar-chip">
+      <label class="logo-btn" for="logoInput" title="Upload logo">
+        <img id="logoPreview" src="" alt="logo" />
+        <span id="logoIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+      </label>
+      <input type="file" id="logoInput" accept="image/*" style="display:none;" />
+      <div class="chip-info">
+        <span class="chip-label">Restaurant</span>
+        <strong id="restaurantLabel">Loading...</strong>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">General</span>
+      <a href="./dashboard.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </span>
+        Dashboard
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Menu</span>
+      <a href="./categories.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        Categories
+      </a>
+      <a href="./menu-items.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </span>
+        Menu Items
+      </a>
+      <a href="./edit-menu.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </span>
+        Edit Menu
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Operations</span>
+      <a href="./orders.html" class="sidebar-link sidebar-link-orders">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </span>
+        Orders
+        <span class="slink-live">LIVE</span>
+      </a>
+      <a href="./inventory.html" class="sidebar-link active">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </span>
+        Inventory
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Settings</span>
+      <a href="./taxes.html" class="sidebar-link">
+        <span class="slink-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </span>
+        Taxes & Charges
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="./brand-color.html" class="sidebar-bottom-btn" id="colorBtn" style="text-decoration:none;">
+        <span id="colorDot" class="color-swatch"></span>
+        Brand Color
+      </a>
+      <button id="logoutBtn" class="sidebar-bottom-btn logout-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <div class="topbar">
+  <a href="./dashboard.html" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Dashboard
+  </a>
+  <div class="topbar-right">
+    <div class="realtime-pill">
+      <span class="live-dot"></span>
+      Connected — stats update in realtime
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+
+     <!-- 
+  ADD THIS BUTTON in inventory.html 
+  Inside the .greeting div, after the <p class="greeting-sub"> tag:
+  
+  Also wrap the greeting in a flex row with the button.
+  
+  Replace the existing .greeting block with this:
+-->
+
+<!-- REPLACE your greeting block in inventory.html with this: -->
+
+<!-- AFTER -->
+<div class="greeting inv-header fade-up" style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+  <div>
+    <div class="greeting-eyebrow">
+      <span class="eyebrow-dot"></span>
+      Inventory Management
+    </div>
+    <h1 class="page-title">Inventory <span style="color:var(--muted); font-weight:500;">📦</span></h1>
+    <p class="greeting-sub">Manage measurement units and raw material stock</p>
+  </div>
+  <!-- AFTER -->
+  <div class="inv-header-btns">
+    <a href="./stock.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--accent);color:#fff;border-radius:10px;font-size:0.82rem;font-weight:700;font-family:'Inter',sans-serif;text-decoration:none;box-shadow:0 3px 12px rgba(200,131,26,0.3);transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='#b5740f'" onmouseout="this.style.background='var(--accent)'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      View Stock
+    </a>
+    <a href="./prepared-stocks.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#7C3AED;color:#fff;border-radius:10px;font-size:0.82rem;font-weight:700;font-family:'Inter',sans-serif;text-decoration:none;box-shadow:0 3px 12px rgba(124,58,237,0.3);transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='#6d28d9'" onmouseout="this.style.background='#7C3AED'">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+  Prepared Stocks
+</a>
+    <button id="importCsvBtn" title="Import from CSV" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--green-bg);color:var(--green);border:1px solid var(--green-brd);border-radius:10px;font-size:0.82rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Import CSV
+    </button>
+    <a href="./recipes.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#EEEDFE;color:#534AB7;border:1px solid #AFA9EC;border-radius:10px;font-size:0.82rem;font-weight:700;font-family:'Inter',sans-serif;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='#DDD9FC'" onmouseout="this.style.background='#EEEDFE'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+      Add Recipes
+    </a>
+  </div>
+</div>
+
+      <div class="inv-panels fade-up" style="animation-delay:0.08s;">
+
+        <!-- ── UNITS PANEL ── -->
+        <div class="inv-panel">
+          <div class="panel-head">
+            <div class="panel-icon unit-ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="panel-title-wrap">
+              <div class="panel-title">Measurement Units</div>
+              <div class="panel-sub">e.g. kg, litre, pcs, dozen</div>
+            </div>
+            <span class="panel-count unit-count" id="unitCount">0 units</span>
+          </div>
+
+          <div class="panel-form">
+            <div class="panel-form-title">Add Unit</div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="unitName">Unit Name</label>
+                <input type="text" id="unitName" class="form-input" placeholder="e.g. Kilogram" maxlength="40" />
+              </div>
+              <div class="form-field" style="max-width:90px;">
+                <label for="unitSymbol">Symbol</label>
+                <input type="text" id="unitSymbol" class="form-input" placeholder="kg" maxlength="10" />
+              </div>
+              <button class="add-btn unit-btn" id="addUnitBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- AFTER -->
+<div class="panel-list" id="unitList" style="display:flex; flex-wrap:wrap; gap:8px; padding:12px;">
+            <div class="list-empty" id="unitEmpty">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              No units added yet
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RAW MATERIALS PANEL ── -->
+        <div class="inv-panel">
+          <div class="panel-head">
+            <div class="panel-icon raw-ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="panel-title-wrap">
+              <div class="panel-title">Raw Materials</div>
+              <div class="panel-sub">Ingredients and supplies you stock</div>
+            </div>
+          <span class="panel-count raw-count" id="rawCount">0 items</span>
+           
+          </div>
+
+          <div class="panel-form">
+            <div class="panel-form-title">Add Raw Material</div>
+            <div class="raw-form-fields">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="rawName">Material Name</label>
+                  <input type="text" id="rawName" class="form-input" placeholder="e.g. Tomatoes" maxlength="60" />
+                </div>
+                <div class="form-field" style="max-width:120px;">
+                  <label for="rawUnit">Unit</label>
+                  <select id="rawUnit" class="form-select form-input">
+                    <option value="">— select —</option>
+                  </select>
+                </div>
+              </div>
+              <!-- AFTER -->
+<div class="raw-bottom-row" style="display:flex; align-items:flex-end; gap:10px;">
+  <div class="form-field" style="flex:1; margin-bottom:0;">
+    <label for="rawDesc">Description <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
+    <textarea id="rawDesc" class="form-input" placeholder="e.g. Fresh roma tomatoes, stored in cold room"></textarea>
+  </div>
+<!-- AFTER -->
+  <button class="add-btn raw-btn" id="addRawBtn" style="flex-shrink:0; margin-bottom:8px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- AFTER -->
+<div class="panel-list" id="rawList" style="display:none;"></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ── CSV IMPORT MODAL ── -->
+<div id="csvImportOverlay" style="
+  position:fixed; inset:0; z-index:300;
+  background:rgba(24,19,13,0.45);
+  display:none; align-items:center; justify-content:center; padding:20px;
+">
+  <div style="
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:20px; width:100%; max-width:560px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.18);
+    animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) forwards;
+  ">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--border);">
+      <div style="display:flex; align-items:center; gap:8px; font-size:0.9rem; font-weight:700; color:var(--text);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Import Raw Materials
+      </div>
+      <button id="csvModalClose" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="padding:18px 20px; display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px; background:var(--blue-bg); border:1px solid var(--blue-brd); border-radius:10px;">
+        <div>
+          <div style="font-size:0.8rem; font-weight:600; color:var(--blue); margin-bottom:2px;">Download Template</div>
+          <div style="font-size:0.69rem; color:#3B82F6;">Fill in Name, Unit Symbol, Description — then import</div>
+        </div>
+        <button id="downloadTemplateBtn" style="
+          display:flex; align-items:center; gap:6px;
+          height:32px; padding:0 14px;
+          border-radius:8px; border:1px solid var(--blue-brd);
+          background:var(--surface); color:var(--blue);
+          font-size:0.74rem; font-weight:600;
+          font-family:'Inter',sans-serif; cursor:pointer;
+        ">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          template.csv
+        </button>
+      </div>
+      <div id="csvDropZone" style="
+        border:2px dashed var(--border2); border-radius:12px;
+        padding:28px 20px; text-align:center; cursor:pointer;
+        transition:all 0.15s;
+      ">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--muted);margin:0 auto 10px;display:block;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <div style="font-size:0.82rem; font-weight:600; color:var(--text2); margin-bottom:4px;">Click to select or drop CSV here</div>
+        <div style="font-size:0.69rem; color:var(--muted);">Only .csv files • Max 500 rows</div>
+      </div>
+      <div id="csvPreviewWrap" style="display:none;">
+        <div style="font-size:0.67rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Preview</div>
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+          <div style="display:grid; grid-template-columns:1fr 80px 1fr 80px; gap:0; background:var(--surface2); border-bottom:1px solid var(--border); padding:8px 14px; font-size:0.63rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">
+            <div>Name</div><div>Unit</div><div>Description</div><div>Status</div>
+          </div>
+          <div id="csvPreviewRows" style="max-height:200px; overflow-y:auto;"></div>
+        </div>
+        <div id="csvSummary" style="margin-top:8px; font-size:0.72rem; color:var(--muted);"></div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:flex-end; gap:10px; padding:14px 20px; border-top:1px solid var(--border);">
+      <button id="csvCancelBtn" style="height:36px;padding:0 16px;border-radius:9px;border:1px solid var(--border2);background:var(--surface);color:var(--text2);font-size:0.8rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;">Cancel</button>
+      <button id="csvConfirmBtn" disabled style="
+        display:flex; align-items:center; gap:6px;
+        height:36px; padding:0 18px;
+        border-radius:9px; border:none;
+        background:var(--green); color:#fff;
+        font-size:0.82rem; font-weight:700;
+        font-family:'Inter',sans-serif; cursor:pointer;
+        box-shadow:0 3px 10px rgba(22,163,74,0.3);
+        opacity:0.4;
+      ">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Import
+      </button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="csvFileInput" accept=".csv" style="display:none;" />
+<div class="toast" id="toast"></div>
+<script type="module" src="./js/inventory.js"></script>
+</body>
+</html>

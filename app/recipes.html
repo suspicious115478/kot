@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuAdmin — Recipes</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/recipes.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">MenuAdmin</span>
+    </div>
+
+    <div class="sidebar-chip">
+      <label class="logo-btn" for="logoInput" title="Upload logo">
+        <img id="logoPreview" src="" alt="logo" />
+        <span id="logoIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+      </label>
+      <input type="file" id="logoInput" accept="image/*" style="display:none;" />
+      <div class="chip-info">
+        <span class="chip-label">Restaurant</span>
+        <strong id="restaurantLabel">Loading...</strong>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">General</span>
+      <a href="./dashboard.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+        Dashboard
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Menu</span>
+      <a href="./categories.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+        Categories
+      </a>
+      <a href="./menu-items.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+        Menu Items
+      </a>
+      <a href="./edit-menu.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+        Edit Menu
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Operations</span>
+      <a href="./orders.html" class="sidebar-link sidebar-link-orders">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        Orders
+        <span class="slink-live">LIVE</span>
+      </a>
+      
+      
+      
+
+      <span class="nav-section-label" style="margin-top:8px;">Settings</span>
+      <a href="./taxes.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        Taxes & Charges
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="./brand-color.html" class="sidebar-bottom-btn" style="text-decoration:none;">
+        <span id="colorDot" class="color-swatch"></span>
+        Brand Color
+      </a>
+      <button id="logoutBtn" class="sidebar-bottom-btn logout-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+     <div class="topbar">
+      <a href="./inventory.html" class="back-btn" style="border-radius:99px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Inventory
+      </a>
+      <div class="topbar-right">
+        <div class="realtime-pill">
+          <span class="live-dot"></span>
+          Recipes linked to inventory
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Header -->
+      <div class="page-header fade-up">
+        <div>
+          <div class="greeting-eyebrow"><span class="eyebrow-dot"></span>Inventory — Recipes</div>
+          <h1 class="page-title">Recipes <span style="color:var(--muted); font-weight:500;">🍳</span></h1>
+          <p class="greeting-sub">Map raw materials to each menu item — with exact quantities per serving</p>
+        </div>
+        <!-- CHANGED: removed back-btn, kept only copy + bulk right-aligned -->
+        <div class="header-actions">
+          <button id="copyRecipeBtn" class="copy-recipe-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Recipe
+          </button>
+          <button id="bulkAddBtn" class="copy-recipe-btn" style="background:#EEEDFE; border-color:#AFA9EC; color:#534AB7;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3h-8M12 3v4"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+            Add to Multiple
+          </button>
+        </div>
+      </div>
+
+      <!-- No raw materials warning -->
+      <div id="noRawWarning" class="warn-banner fade-up" style="display:none; animation-delay:0.04s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <strong>No raw materials found.</strong>
+          Add raw materials on the <a href="./inventory.html">Inventory</a> page first before creating recipes.
+        </div>
+      </div>
+
+      <!-- Two-col layout -->
+      <div class="recipes-layout fade-up" style="animation-delay:0.08s;">
+
+        <!-- LEFT — Menu items list -->
+        <div class="items-panel">
+          <div class="items-panel-head">
+            <div class="items-panel-title">Menu Items</div>
+            <span class="items-count" id="menuItemCount">0 items</span>
+          </div>
+
+          <!-- Category filter -->
+          <div class="cat-filter" id="catFilter">
+            <button class="cat-pill active" data-cat="all">All</button>
+          </div>
+
+          <!-- Search -->
+          <div class="item-search-wrap">
+            <svg class="item-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="itemSearch" class="item-search" placeholder="Search menu items..." />
+          </div>
+
+          <!-- CHANGED: grid layout instead of list -->
+          <div class="items-grid" id="menuItemsList">
+            <div class="list-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+              Loading menu items...
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT — Recipe editor -->
+        <div class="recipe-editor" id="recipeEditor">
+
+          <!-- Empty state -->
+          <div class="editor-empty" id="editorEmpty">
+            <div class="editor-empty-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
+            </div>
+            <div class="editor-empty-title">Select a menu item</div>
+            <div class="editor-empty-sub">Click any item on the left to create or edit its recipe</div>
+          </div>
+
+          <!-- Editor content (hidden until item selected) -->
+          <div id="editorContent" style="display:none;">
+
+            <!-- Item header -->
+            <div class="editor-item-header">
+              <img id="editorItemImg" src="" alt="" class="editor-item-img" />
+              <div class="editor-item-info">
+                <div class="editor-item-name" id="editorItemName">—</div>
+                <div class="editor-item-cat" id="editorItemCat">—</div>
+                <div class="editor-item-price" id="editorItemPrice">—</div>
+              </div>
+              <div id="recipeSavedBadge" class="recipe-saved-badge" style="display:none;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Recipe Saved
+              </div>
+            </div>
+
+            <!-- Yield / serving note -->
+            <div class="yield-row">
+              <div class="yield-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Quantities below are per serving / per order
+              </div>
+              <div class="yield-field">
+                <label>Yield (servings)</label>
+                <input type="number" id="recipeYield" class="yield-input" value="1" min="1" max="100" />
+              </div>
+            </div>
+
+            <!-- Raw material search + add -->
+            <div class="ingredient-add-section">
+              <div class="ingredient-add-label">Add Ingredients</div>
+              <div class="raw-search-wrap">
+                <svg class="raw-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="rawSearch" class="raw-search" placeholder="Search raw materials…" autocomplete="off" />
+                <div class="raw-dropdown" id="rawDropdown"></div>
+              </div>
+            </div>
+
+            <!-- Ingredients table -->
+            <div class="ingredients-table-wrap">
+              <div class="ingredients-table-head">
+                <div>Ingredient</div>
+                <div>Quantity</div>
+                <div>Unit</div>
+                <div></div>
+              </div>
+              <div id="ingredientRows" class="ingredient-rows">
+                <div class="ingredient-empty" id="ingredientEmpty">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  Search and add raw materials above
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="recipe-notes-wrap">
+              <label class="recipe-notes-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Chef Notes
+                <span style="font-weight:400; color:var(--muted);">(optional)</span>
+              </label>
+              <textarea id="recipeNotes" class="recipe-notes" placeholder="e.g. Marinate for 2 hours, use cold butter…" rows="2"></textarea>
+            </div>
+
+            <!-- Save / Update button -->
+            <div class="editor-actions">
+              <button id="saveRecipeBtn" class="save-recipe-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save Recipe
+              </button>
+              <button id="clearRecipeBtn" class="clear-recipe-btn" style="display:none;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                Delete Recipe
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ── COPY RECIPE MODAL ── -->
+<div class="modal-overlay" id="copyModal" style="display:none;">
+  <div class="copy-modal">
+    <div class="copy-modal-header">
+      <div class="copy-modal-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Recipe
+      </div>
+      <button class="copy-modal-close" id="copyModalClose">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="copy-modal-body">
+      <div class="copy-flow">
+        <div class="copy-flow-box copy-flow-from">
+          <div class="copy-flow-label">
+            <span class="copy-flow-badge from-badge">FROM</span>
+          </div>
+          <div class="copy-to-search-wrap">
+            <svg class="copy-to-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="copyFromSearch" class="copy-to-search" placeholder="Search source item…" autocomplete="off" />
+          </div>
+          <div id="copyFromSelected" class="copy-to-selected" style="display:none;">
+            <img id="copyFromImg" src="" alt="" class="copy-flow-thumb" />
+            <div class="copy-flow-item-info">
+              <div class="copy-flow-item-name" id="copyFromName">—</div>
+              <div class="copy-flow-item-cat" id="copyFromCat">—</div>
+            </div>
+            <button class="copy-to-clear" id="copyFromClear">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div id="copyFromDropdown" class="copy-to-dropdown"></div>
+          <div class="copy-flow-ing-count" id="copyFromIngCount"></div>
+          <div id="copyFromNoRecipeWarn" class="copy-overwrite-warn" style="display:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            This item has no saved recipe to copy.
+          </div>
+        </div>
+
+        <div class="copy-flow-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="copy-flow-box copy-flow-to">
+          <div class="copy-flow-label">
+            <span class="copy-flow-badge to-badge">TO</span>
+          </div>
+          <div class="copy-to-search-wrap">
+            <svg class="copy-to-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="copyToSearch" class="copy-to-search" placeholder="Search target item…" autocomplete="off" />
+          </div>
+          <div id="copyToSelected" class="copy-to-selected" style="display:none;">
+            <img id="copyToImg" src="" alt="" class="copy-flow-thumb" />
+            <div class="copy-flow-item-info">
+              <div class="copy-flow-item-name" id="copyToName">—</div>
+              <div class="copy-flow-item-cat" id="copyToCat">—</div>
+            </div>
+            <button class="copy-to-clear" id="copyToClear">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div id="copyToDropdown" class="copy-to-dropdown"></div>
+          <div id="copyToOverwriteWarn" class="copy-overwrite-warn" style="display:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            This item already has a recipe — it will be overwritten.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-modal-footer">
+      <button class="copy-cancel-btn" id="copyCancelBtn">Cancel</button>
+      <button class="copy-confirm-btn" id="copyConfirmBtn" disabled>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy &amp; Open
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── BULK ADD MODAL ── -->
+<div class="modal-overlay" id="bulkAddModal" style="display:none;">
+  <div class="copy-modal" style="max-width:500px;">
+    <div class="copy-modal-header">
+      <div class="copy-modal-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3h-8M12 3v4"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+        Add to Multiple Items
+        <span style="font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:99px;background:#EEEDFE;border:1px solid #AFA9EC;color:#534AB7;letter-spacing:0.08em;">BULK</span>
+      </div>
+      <button class="copy-modal-close" id="bulkAddClose">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="copy-modal-body" style="padding:16px 20px; display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Raw Material</div>
+        <div style="position:relative;">
+          <svg style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="bulkRawSearch" class="raw-search" style="width:100%;padding-left:32px;" placeholder="Search raw material…" autocomplete="off" />
+          <div class="raw-dropdown" id="bulkRawDropdown"></div>
+        </div>
+        <div id="bulkRawSelected" style="display:none; margin-top:6px; display:none; align-items:center; gap:10px; padding:9px 12px; background:#EEEDFE; border:1px solid #AFA9EC; border-radius:9px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#534AB7;flex-shrink:0;"></span>
+          <span id="bulkRawName" style="font-size:0.82rem;font-weight:600;color:#3C3489;flex:1;"></span>
+          <span id="bulkRawUnitBadge" style="font-size:0.68rem;color:#534AB7;background:#fff;padding:2px 7px;border-radius:99px;border:1px solid #AFA9EC;"></span>
+          <button id="bulkRawClear" style="width:20px;height:20px;border-radius:5px;border:none;background:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Quantity per serving</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <input type="number" id="bulkQtyInput" class="ing-qty-input" style="width:100px;text-align:left;padding-left:12px;" placeholder="0.000" min="0" step="any" />
+          <span id="bulkQtyUnit" style="font-size:0.78rem;color:var(--text2);background:var(--surface2);padding:5px 11px;border-radius:7px;border:1px solid var(--border);"></span>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <div style="font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Menu Items</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span id="bulkSelCount" style="font-size:0.69rem;color:#534AB7;font-weight:600;"></span>
+            <button id="bulkSelectAll" style="font-size:0.68rem;font-weight:600;color:var(--accent);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;">Select all</button>
+          </div>
+        </div>
+        <div style="position:relative;margin-bottom:8px;">
+          <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="bulkItemSearch" class="item-search" style="width:100%;padding-left:30px;height:32px;" placeholder="Search items…" />
+        </div>
+        <div id="bulkItemsList" style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:9px;"></div>
+      </div>
+    </div>
+
+    <div class="copy-modal-footer" style="justify-content:space-between;">
+      <div id="bulkFooterNote" style="font-size:0.72rem;color:var(--muted);"></div>
+      <div style="display:flex;gap:8px;">
+        <button class="copy-cancel-btn" id="bulkCancelBtn">Cancel</button>
+        <button class="copy-confirm-btn" id="bulkConfirmBtn" disabled style="background:#534AB7;box-shadow:0 3px 10px rgba(83,74,183,0.3);">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Add Ingredient
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="./js/recipes.js"></script>
+</body>
+</html>

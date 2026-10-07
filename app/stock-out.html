@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuAdmin — Stock Out</title>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#C8831A">
+  <link rel="stylesheet" href="./css/stock-out.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">MenuAdmin</span>
+    </div>
+
+    <div class="sidebar-chip">
+      <label class="logo-btn" for="logoInput" title="Upload logo">
+        <img id="logoPreview" src="" alt="logo" />
+        <span id="logoIcon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+      </label>
+      <input type="file" id="logoInput" accept="image/*" style="display:none;" />
+      <div class="chip-info">
+        <span class="chip-label">Restaurant</span>
+        <strong id="restaurantLabel">Loading...</strong>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">General</span>
+      <a href="./dashboard.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+        Dashboard
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Menu</span>
+      <a href="./categories.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+        Categories
+      </a>
+      <a href="./menu-items.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+        Menu Items
+      </a>
+      <a href="./edit-menu.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+        Edit Menu
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Operations</span>
+      <a href="./orders.html" class="sidebar-link sidebar-link-orders">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        Orders
+        <span class="slink-live">LIVE</span>
+      </a>
+
+      <span class="nav-section-label" style="margin-top:8px;">Settings</span>
+      <a href="./taxes.html" class="sidebar-link">
+        <span class="slink-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        Taxes & Charges
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="./brand-color.html" class="sidebar-bottom-btn" style="text-decoration:none;">
+        <span class="color-swatch"></span>
+        Brand Color
+      </a>
+      <button id="logoutBtn" class="sidebar-bottom-btn logout-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <div class="topbar">
+      <a href="./stock.html" class="back-btn" style="border-radius:99px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Stock
+      </a>
+      <div class="topbar-right">
+        <div class="realtime-pill">
+          <span class="live-dot"></span>
+          Connected — updates in realtime
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="page-header fade-up">
+        <div>
+          <div class="greeting-eyebrow"><span class="eyebrow-dot"></span>Stock Management</div>
+          <h1 class="page-title">Stock Out <span style="color:var(--muted); font-weight:500;">📤</span></h1>
+          <p class="greeting-sub">Record raw material taken out of stock — wastage, spoilage, internal use, etc.</p>
+        </div>
+      </div>
+
+      <!-- Remove Stock form -->
+      <div class="so-card fade-up" style="animation-delay:0.05s;">
+        <div class="so-card-head">
+          <div class="so-card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div>
+            <div class="so-card-title">Remove from Stock</div>
+            <div class="so-card-sub">Select a material and enter the quantity removed</div>
+          </div>
+        </div>
+
+        <div id="removeItemsContainer"></div>
+
+<button id="addMoreItemBtn" style="display:flex;align-items:center;gap:6px;width:100%;height:36px;margin-bottom:14px;border:1.5px dashed var(--border2);border-radius:9px;background:none;font-size:0.8rem;font-weight:600;color:var(--text2);cursor:pointer;justify-content:center;font-family:'Inter',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  Add Another Item
+</button>
+
+<div class="so-field">
+  <label for="removeNoteInput">Reason <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
+  <textarea id="removeNoteInput" class="so-input" placeholder="e.g. Spoiled, spilled, used for staff meal…"></textarea>
+</div>
+
+<button id="removeConfirmBtn" class="so-remove-btn">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  Remove from Stock
+</button>
+      </div>
+
+      <!-- Recent removals -->
+      <div class="so-hist-head fade-up" style="animation-delay:0.08s;">
+        <span class="so-hist-title">Recent Removals</span>
+        <span class="so-hist-note">Last 5 only — older entries are cleared automatically</span>
+      </div>
+
+      <div class="so-hist-card fade-up" style="animation-delay:0.1s;">
+        <div id="removalsList" class="so-hist-list">
+          <div class="so-hist-empty" id="removalsEmpty">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <p>No removals recorded yet</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="./js/stock-out.js"></script>
+</body>
+</html>
